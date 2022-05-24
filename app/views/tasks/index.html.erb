@@ -1,0 +1,30 @@
+
+
+<div class="container">
+<h1>My tasks</h1>
+<div class="card">
+<ul style="list-style-type: none" class="list-group list-group-flush">
+  <div class=></div>
+  <% @tasks.each do |task|%>
+
+  <li class="list-group-item text-reset text-center"><div class="d-flex align-items-center"><% if task.completed %>
+    <i class="fa-regular fa-square me-2"></i>
+  <% else %>
+  <i class="fa-regular fa-square-check me-2"></i>
+  <% end %>
+  <%= link_to task.title, task_path(task.id), class: "text-decoration-none text-dark"%><%= link_to raw('<i class="fa-solid fa-trash-can"></i>'),
+            task_path(task),
+            class: "ms-auto text-dark",
+            method: :delete,
+            data: { confirm: "Are you sure?" } %> </div></li>
+
+  <% end %>
+
+</ul>
+</div>
+<hr>
+
+<p><%= link_to "Add a new task", new_task_path, class: "text-dark" %></p>
+
+
+</div>
